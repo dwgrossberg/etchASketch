@@ -1,0 +1,29 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#container {
+    display: flex;
+    justify-content: space-around;
+    border-style: solid;
+    border-color: green;
+    border-width: 3px;
+    min-height: 500px;
+    min-width: 500px;
+}
+
+.gridColumn {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.box {
+    border-style: dotted;
+    border-color: black;
+    border-width: 1px;
+    min-width: 10px;
+    min-height: 10px;
+}

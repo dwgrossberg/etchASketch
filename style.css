@@ -1,8 +1,18 @@
 body {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
+}
+
+h1 {
+    font-family: monospace, Impact, fantasy, Helvetica, sans-serif;
+    font-size: 25pt;
+    background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 60px;
 }
 
 #container {

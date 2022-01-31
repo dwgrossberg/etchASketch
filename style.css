@@ -2,14 +2,15 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100vh;
 }
 
 #container {
     display: flex;
     justify-content: space-around;
     border-style: solid;
-    border-color: green;
-    border-width: 3px;
+    border-color: black;
+    border-width: 2px;
     min-height: 500px;
     min-width: 500px;
 }
@@ -23,7 +24,7 @@ body {
 .box {
     border-style: dotted;
     border-color: black;
-    border-width: 1px;
-    min-width: 10px;
-    min-height: 10px;
+    border-width: .5px;
+
+
 }

@@ -9,6 +9,14 @@ body {
     background-size: cover;
 }
 
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 80vw;
+    gap: 30px;
+}
+
 h1 {
     font-family: monospace, Impact, fantasy, Helvetica, sans-serif;
     font-size: 25pt;
@@ -20,14 +28,19 @@ h1 {
     margin-top: -10px;
 }
 
+button {
+    margin-left: auto;
+    margin-top: -10px;
+}
+
 #container {
     display: flex;
     justify-content: space-around;
     border-style: solid;
     border-color: black;
     border-width: 1px;
-    min-height: 600px;
-    min-width: 600px;
+    min-height: 80vh;
+    min-width: 80vw;
 }
 
 .gridColumn {

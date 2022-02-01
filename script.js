@@ -2,8 +2,8 @@
 
 function createGrid(number) {
     const container = document.getElementById('container');
-    const boxHeight = String(Math.floor(500/number)) + 'px';
-    const boxWidth = String(Math.floor(500/number)) + 'px';
+    const boxHeight = String(600/number) + 'px';
+    const boxWidth = String(600/number) + 'px';
     for (let i = 0; i < number; i++) { 
         let divColumn = document.createElement('div');
         divColumn.classList.add('gridColumn');

@@ -19,8 +19,8 @@ body {
 }
 
 h1 {
-    font-family: monospace, Impact, fantasy, Helvetica, sans-serif;
-    font-size: 25pt;
+    font-family: 'Lobster Two', cursive;
+    font-size: 40px;
     text-shadow: 2px 2px white;
     background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
     -webkit-background-clip: text;
@@ -56,4 +56,9 @@ button {
     border-width: .25px;
     background-color: white;
     opacity: 0.25;
+}
+
+
+.black {
+    background-color: black;
 }

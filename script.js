@@ -18,4 +18,13 @@ function createGrid(number) {
 }
 }
 
-console.log(createGrid(10));
+createGrid(16);
+
+const box = document.querySelectorAll('div.box');
+box.forEach(box => box.addEventListener('mouseover', function(e){
+    let r = Math.random, m = Math.round, s = 255;
+    let rgb = 'rgb(' + m(r()*s) + ', ' + m(r()*s) + ', ' + m(r()*s) + ')';
+    box.style.backgroundColor = rgb;
+}
+))
+    

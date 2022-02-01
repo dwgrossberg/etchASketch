@@ -11,6 +11,7 @@ body {
 
 .header {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     min-width: 80vw;
@@ -25,12 +26,12 @@ h1 {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 10px;
-    margin-top: -10px;
+    margin-top: -5px;
 }
 
 button {
-    margin-left: auto;
-    margin-top: -10px;
+    margin-top: -25px;
+    margin-bottom: 15px;
 }
 
 #container {
@@ -39,8 +40,8 @@ button {
     border-style: solid;
     border-color: black;
     border-width: 1px;
-    min-height: 80vh;
-    min-width: 80vw;
+    min-height: 75vh;
+    min-width: 90vw;
 }
 
 .gridColumn {

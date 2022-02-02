@@ -1,5 +1,4 @@
 const container = document.getElementById('container');
-const box = document.querySelectorAll('div.box');
 
 
 function clearGrid(parent) {
@@ -23,18 +22,18 @@ function createGrid(number) {
             box.style.height = boxHeight;
             box.style.width = boxWidth;
             divColumn.appendChild(box);
-  } 
+        } 
         container.appendChild(divColumn);
-}
+    }
+    let boxPixel = document.querySelectorAll('div.box');
+    boxPixel.forEach(boxPixel => boxPixel.addEventListener('mouseenter', colorGrid));
 }
 
 //initial grid size upon page load
 createGrid(16);
 
-
-//mouseover color effect
-function colorSet(e) {
-    e.target.style.backgroundColor = 'black';
+function colorGrid() {
+    this.style.backgroundColor = 'black';
 }
 
 
@@ -44,13 +43,6 @@ function randomRGB(e) {
     let rgb = 'rgb(' + m(r()*s) + ', ' + m(r()*s) + ', ' + m(r()*s) + ')';
     box.style.backgroundColor = rgb;    
 }
-
-
-//add mouseover functionality to the grid
-box.forEach(item => {
-    item.addEventListener('mouseover', colorSet);
-} 
-);
 
 
 //reset sketch box to original size and remove any box styling

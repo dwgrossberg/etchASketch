@@ -5,13 +5,12 @@ body {
     align-items: center;
     height: 100vh;
     overflow: hidden;
-    background-image: url('../../img/sandDunes.jpg');
+    background-color: #E4F0F0;
     background-size: cover;
 }
 
 .header {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     min-width: 80vw;
@@ -21,21 +20,28 @@ body {
 h1 {
     font-family: 'Lobster Two', cursive;
     font-size: 50px;
+    margin-bottom: 60px;
+    margin-top: -50px;
+    color: #79B4B4;
+    text-shadow: 1px 1px slategray;
+}
+
+h1.hippie {
     text-shadow: 2px 2px white;
     background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-bottom: 20px;
-    margin-top: -20px;
+
+
 }
 
 .main {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 75vh;
-    min-width: 80vw;
     gap: 50px;
+    margin-right: 100px;
+    margin-left: 50px;
 }
 
 .controlPanel {
@@ -55,10 +61,9 @@ button {
     display: flex;
     justify-content: space-around;
     border-style: solid;
-    border-color: black;
+    border-color: #024545;
     border-width: 1px;
-    min-height: 60vh;
-    min-width: 60vw;
+
 }
 
 .gridColumn {
@@ -68,14 +73,11 @@ button {
 }
 
 .box {
-    border-style: dotted;
-    border-color: black;
-    border-width: .25px;
     background-color: white;
-    opacity: 0.25;
 }
 
-
-.black {
-    background-color: black;
+#colorPicker {
+    width: 3em;
+    height: 3em;
+    border-radius: 10%;
 }

@@ -13,7 +13,7 @@ function createGrid(number) {
     if (typeof Number(number) != 'number') return; //end function if no number is entered
     clearGrid(container);
     const boxHeight = String(60/Number(number)) + 'vh';
-    const boxWidth = String(60/Number(number)) + 'vw';
+    const boxWidth = String(50/Number(number)) + 'vw';
     for (let i = 0; i < number; i++) { 
         let divColumn = document.createElement('div');
         divColumn.classList.add('gridColumn');
@@ -36,7 +36,7 @@ createGrid(16);
 
 //Set boxPixel color and styles
 function colorGrid() {
-    this.style.backgroundColor = 'black';
+    this.style.backgroundColor = 'rgb(2, 69, 69)';
 }
 
 

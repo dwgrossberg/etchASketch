@@ -1,12 +1,13 @@
 const container = document.getElementById('container');
+const buttonClear = document.getElementById('reset');
 
 
+//Creating and clearing the grid
 function clearGrid(parent) {
     while(parent.firstChild) {
         parent.removeChild(parent.firstChild)
     }
 }
-
 
 function createGrid(number) {
     if (typeof Number(number) != 'number') return; //end function if no number is entered
@@ -29,9 +30,11 @@ function createGrid(number) {
     boxPixel.forEach(boxPixel => boxPixel.addEventListener('mouseenter', colorGrid));
 }
 
-//initial grid size upon page load
+//Initial grid size upon page load
 createGrid(16);
 
+
+//Set color g
 function colorGrid() {
     this.style.backgroundColor = 'black';
 }
@@ -46,8 +49,7 @@ function randomRGB(e) {
 
 
 //reset sketch box to original size and remove any box styling
-const buttonClear = document.getElementById('clear');
-buttonClear.addEventListener('click', function(e) {
+buttonClear.addEventListener('click', function() {
     clearGrid(container);
     createGrid(16);
 }

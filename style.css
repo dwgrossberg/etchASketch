@@ -20,13 +20,26 @@ body {
 
 h1 {
     font-family: 'Lobster Two', cursive;
-    font-size: 40px;
+    font-size: 50px;
     text-shadow: 2px 2px white;
     background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-bottom: 10px;
-    margin-top: -5px;
+    margin-bottom: 20px;
+    margin-top: -20px;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 75vh;
+    min-width: 80vw;
+    gap: 50px;
+}
+
+.controlPanel {
+
 }
 
 button {
@@ -40,8 +53,8 @@ button {
     border-style: solid;
     border-color: black;
     border-width: 1px;
-    min-height: 75vh;
-    min-width: 90vw;
+    min-height: 60vh;
+    min-width: 60vw;
 }
 
 .gridColumn {

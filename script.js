@@ -12,8 +12,8 @@ function clearGrid(parent) {
 function createGrid(number) {
     if (typeof Number(number) != 'number') return; //end function if no number is entered
     clearGrid(container);
-    const boxHeight = String(75/Number(number)) + 'vh';
-    const boxWidth = String(90/Number(number)) + 'vw';
+    const boxHeight = String(60/Number(number)) + 'vh';
+    const boxWidth = String(60/Number(number)) + 'vw';
     for (let i = 0; i < number; i++) { 
         let divColumn = document.createElement('div');
         divColumn.classList.add('gridColumn');
@@ -34,7 +34,7 @@ function createGrid(number) {
 createGrid(16);
 
 
-//Set color g
+//Set boxPixel color and styles
 function colorGrid() {
     this.style.backgroundColor = 'black';
 }
@@ -48,7 +48,7 @@ function randomRGB(e) {
 }
 
 
-//reset sketch box to original size and remove any box styling
+//Buttons and user input
 buttonClear.addEventListener('click', function() {
     clearGrid(container);
     createGrid(16);

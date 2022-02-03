@@ -1,9 +1,3 @@
-const container = document.getElementById('container');
-const buttonReset = document.getElementById('reset');
-const colorPickerSpan = document.getElementById('colorPickerSpan');
-const colorPicker = document.getElementById('colorPicker');
-
-
 //Clearing the grid
 function clearGrid(parent) {
     while(parent.firstChild) {
@@ -12,6 +6,7 @@ function clearGrid(parent) {
 }
 
 //Creating the grid
+const container = document.getElementById('container');
 function createGrid(number) {
     if (typeof Number(number) != 'number') return; //end function if no number is entered
     clearGrid(container);
@@ -36,21 +31,13 @@ function createGrid(number) {
 //Initial grid size upon page load
 createGrid(16);
 
-
-//Set boxPixel color and styles
+//Color picker button
+const colorPickerSpan = document.getElementById('colorPickerSpan');
+const colorPicker = document.getElementById('colorPicker');
 function colorGrid() {
     this.style.backgroundColor = colorPicker.value;
 }
 
-//Select a random rbg color for each square
-function randomRGB(e) {
-    let r = Math.random, m = Math.round, s = 255;
-    let rgb = 'rgb(' + m(r()*s) + ', ' + m(r()*s) + ', ' + m(r()*s) + ')';
-    box.style.backgroundColor = rgb;    
-}
-
-
-//Color picker button
 colorPickerSpan.addEventListener('mouseenter', () =>
     colorPickerSpan.classList.add('colorPickerSpanHover')
 );
@@ -59,21 +46,36 @@ colorPickerSpan.addEventListener('mouseleave', () =>
     colorPickerSpan.classList.remove('colorPickerSpanHover')
 );
 
-colorPickerSpan.addEventListener('click', () =>
-    colorPicker.click()
-);
+colorPickerSpan.addEventListener('click', () => {
+    colorPicker.click();
+});
 
 colorPicker.addEventListener('change', () =>
     colorPickerSpan.style.backgroundColor = colorPicker.value
 );
 
+//Rainbow button
+const rainbow = document.getElementById('rainbow');
+rainbow.addEventListener('click', addRainbow);
+function addRainbow() {
+    let box = document.querySelectorAll('div.box');
+    box.forEach(box => box.addEventListener('mouseenter', () => {
+        let r = Math.random, m = Math.round, s = 255;
+        let rgb = 'rgb(' + m(r()*s) + ', ' + m(r()*s) + ', ' + m(r()*s) + ')';
+        box.style.backgroundColor = rgb;
+    }));
+}
+
+function removeRainbow() {
+
+}
 
 //Reset button
+const buttonReset = document.getElementById('reset');
 buttonReset.addEventListener('click', () => {
     clearGrid(container);
     createGrid(16);
     colorPickerSpan.style.backgroundColor = '#004242';
-    colorPicker. value = '#004242';
-    }
-    );
-
+    colorPicker.value = '#004242';
+}
+);

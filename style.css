@@ -17,11 +17,11 @@ body {
 
 h1 {
     font-family: 'Lobster Two', cursive;
-    font-size: 50px;
-    margin-bottom: 50px;
-    margin-top: -50px;
+    font-size: 60px;
+    margin-bottom: 40px;
+    margin-top: -40px;
     color: #79B4B4;
-    text-shadow: 1px 1px slategray;
+    text-shadow: 1px 1px #2b1719;
 }
 
 h1.hippie {
@@ -29,8 +29,6 @@ h1.hippie {
     background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-
-
 }
 
 .main {
@@ -51,10 +49,10 @@ h1.hippie {
 #container {
     display: flex;
     justify-content: space-around;
-    border-style: solid;
+    border-style: double;
     border-color: #2b1719;
-    border-width: 1px;
-
+    border-width: 3px;
+    box-shadow: .5px .5px .5px slategrey;
 }
 
 .gridColumn {
@@ -70,18 +68,33 @@ h1.hippie {
 #colorPickerSpan {
     background-color: #004242;
     display: inline-block;
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    box-shadow: 1px 1px 1px slategrey;
+    box-shadow: .5px .5px .5px slategrey;
+    margin-right: -20px;
 }
 
-.colorPickerSpanHover {
-    box-shadow: 2px 4px 4px #2b1719;
+.colorPickerSpanHover,
+buttonHover {
+    box-shadow: 2px 2px 2px #2b1719;
     transition: .3s;
     transform: scale(1.1);
 }
 
 input[type='color'] {
     display: none;
+}
+
+button {
+    font-family: 'Lato', sans-serif;
+    font-size: 13px;
+    color: #2b1719;
+    padding: 7px 13px;
+    background-color: #f2f2f2;
+    border-width: 1px;
+    border-style: none;
+    border-color: #2b1719;
+    border-radius: 16px;
+    box-shadow: .5px .5px .5px slategrey;
 }

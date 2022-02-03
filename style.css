@@ -24,7 +24,7 @@ h1 {
     text-shadow: 1px 1px #2b1719;
 }
 
-h1.hippie {
+.h1Rainbow {
     text-shadow: 2px 2px white;
     background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
     -webkit-background-clip: text;
@@ -75,10 +75,9 @@ h1.hippie {
     margin-right: -20px;
 }
 
-.colorPickerSpanHover,
-buttonHover {
-    box-shadow: 2px 2px 2px #2b1719;
-    transition: .3s;
+.colorPickerSpanHover {
+    box-shadow: 3px 3px 3px #2b1719;
+    transition: .2s;
     transform: scale(1.1);
 }
 
@@ -97,4 +96,20 @@ button {
     border-color: #2b1719;
     border-radius: 16px;
     box-shadow: .5px .5px .5px slategrey;
+}
+
+.rainbowHover {
+    box-shadow: .5px .5px .5px #2b1719;
+    transition: .2;
+    transform: scale(1.05);
+    background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
+    color: white;
+    opacity: 80%;
+    text-shadow: .5px .5px slategrey;
+}
+
+.resetHover {
+    box-shadow: .5px .5px .5px #2b1719;
+    transition: .2;
+    transform: scale(1.05);
 }

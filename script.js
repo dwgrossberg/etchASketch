@@ -55,29 +55,53 @@ colorPicker.addEventListener('change', () =>
     colorPickerSpan.style.backgroundColor = colorPicker.value
 );
 
-//Rainbow button
+//Rainbow button and functionality 
+const body = document.querySelector('body');
+const h1 = document.querySelector('h1');
 const rainbow = document.getElementById('rainbow');
+rainbow.addEventListener('mouseenter', () =>
+    rainbow.classList.add('rainbowHover')
+);
+
+rainbow.addEventListener('mouseleave', () =>
+    rainbow.classList.remove('rainbowHover')
+);
+
 rainbow.addEventListener('click', addRainbow);
 
 function randomRGB() {
     let r = Math.random, m = Math.round, s = 255;
     let rgb = 'rgb(' + m(r()*s) + ', ' + m(r()*s) + ', ' + m(r()*s) + ')';
     this.style.backgroundColor = rgb;
+    body.style.backgroundColor = rgb; //some visual eye-candy
 }
 
 function addRainbow() {
     let box = document.querySelectorAll('div.box');
     box.forEach(box => box.addEventListener('mouseenter', randomRGB));
+    h1.classList.add('h1Rainbow');
 }
 
 function removeRainbow() {
     let box = document.querySelectorAll('div.box');
     box.forEach(box => box.removeEventListener('mouseenter', randomRGB));
+    h1.classList.remove('h1Rainbow');
+    body.style.backgroundColor = '#E4F0F0';
 }
 
 //Reset button
 const buttonReset = document.getElementById('reset');
+buttonReset.addEventListener('mouseenter', () => 
+    buttonReset.classList.add('resetHover')
+);
+
+buttonReset.addEventListener('mouseleave', () => 
+    buttonReset.classList.remove('resetHover')
+);
+
 buttonReset.addEventListener('click', () => {
+    h1.classList.remove('h1Rainbow');
+    body.style.backgroundColor = '#E4F0F0';
     clearGrid(container);
     createGrid(16);
     colorPickerSpan.style.backgroundColor = '#004242';

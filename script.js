@@ -48,6 +48,7 @@ colorPickerSpan.addEventListener('mouseleave', () =>
 
 colorPickerSpan.addEventListener('click', () => {
     removeRainbow();
+    unEraseGridPixel();
     colorPicker.click();
 });
 
@@ -67,11 +68,23 @@ eraser.addEventListener('mouseleave', () =>
 
 eraser.addEventListener('click', () => {
     removeRainbow();
-    let box = document.querySelectorAll('div.box');
-    box.forEach(box => box.addEventListener('mouseenter', () => 
-    box.style.backgroundColor = 'white'
-    ))
+    eraseGridPixel();
 });
+
+function whiteout() {
+    this.style.backgroundColor = 'white';
+}
+
+function eraseGridPixel() {
+    let box = document.querySelectorAll('div.box');
+    box.forEach(box => box.addEventListener('mouseenter', whiteout));
+    colorPickerSpan.style.backgroundColor = 'white';
+}
+
+function unEraseGridPixel() {
+    let box = document.querySelectorAll('div.box');
+    box.forEach(box => box.removeEventListener('mouseenter', whiteout));
+}
 
 //Rainbow button and rainbow color functionality 
 const body = document.querySelector('body');

@@ -31,10 +31,6 @@ h1 {
     -webkit-text-fill-color: transparent;
 }
 
-.rainbowSpan {
-    background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
-}
-
 .main {
     display: flex;
     flex-direction: column;
@@ -83,6 +79,10 @@ h1 {
     box-shadow: 3px 3px 3px #2b1719;
     transition: .2s;
     transform: scale(1.1);
+}
+
+.rainbowSpan {
+    background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
 }
 
 input[type='color'] {

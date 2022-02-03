@@ -13,14 +13,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-width: 80vw;
-    gap: 30px;
 }
 
 h1 {
     font-family: 'Lobster Two', cursive;
     font-size: 50px;
-    margin-bottom: 60px;
+    margin-bottom: 50px;
     margin-top: -50px;
     color: #79B4B4;
     text-shadow: 1px 1px slategray;
@@ -37,24 +35,17 @@ h1.hippie {
 
 .main {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 50px;
-    margin-right: 100px;
-    margin-left: 50px;
 }
 
 .controlPanel {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    min-width: 15vw;
-    gap: 20px;
-}
-
-button {
-    margin-top: -25px;
-    margin-bottom: 15px;
+    gap: 30px;
+    margin-bottom: -20px;
 }
 
 #container {
@@ -76,8 +67,20 @@ button {
     background-color: white;
 }
 
-#colorPicker {
-    width: 3em;
-    height: 3em;
-    border-radius: 10%;
+#colorPickerSpan {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    box-shadow: 2px 3px 6px #0000001A;
+}
+
+.colorPickerSpanHover {
+    box-shadow: 3px 5px 10px #0000001A;
+    transition: .5s;
+    transform: scale(1.15);
+}
+
+input[type='color'] {
+    display: none;
 }

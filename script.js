@@ -1,5 +1,7 @@
 const container = document.getElementById('container');
 const buttonClear = document.getElementById('reset');
+const colorPickerSpan = document.getElementById('colorPickerSpan');
+const colorPicker = document.getElementById('colorPicker');
 
 
 //Creating and clearing the grid
@@ -13,7 +15,7 @@ function createGrid(number) {
     if (typeof Number(number) != 'number') return; //end function if no number is entered
     clearGrid(container);
     const boxHeight = String(60/Number(number)) + 'vh';
-    const boxWidth = String(50/Number(number)) + 'vw';
+    const boxWidth = String(70/Number(number)) + 'vw';
     for (let i = 0; i < number; i++) { 
         let divColumn = document.createElement('div');
         divColumn.classList.add('gridColumn');
@@ -40,7 +42,7 @@ function colorGrid() {
 }
 
 
-//select a random rbg color for each square
+//Select a random rbg color for each square
 function randomRGB(e) {
     let r = Math.random, m = Math.round, s = 255;
     let rgb = 'rgb(' + m(r()*s) + ', ' + m(r()*s) + ', ' + m(r()*s) + ')';
@@ -48,7 +50,22 @@ function randomRGB(e) {
 }
 
 
-//Buttons and user input
+//Color picker button
+colorPickerSpan.addEventListener('mouseenter', function(e) {
+    colorPickerSpan.classList.add('colorPickerSpanHover');
+})
+
+colorPickerSpan.addEventListener('mouseleave', function(e) {
+    colorPickerSpan.classList.remove('colorPickerSpanHover');
+})
+
+//colorPickerSpan.style.backgroundColor = colorPicker.value; 
+
+colorPickerSpan.addEventListener('click', function(e) {
+    colorPicker.click();
+} 
+);
+
 buttonClear.addEventListener('click', function() {
     clearGrid(container);
     createGrid(16);

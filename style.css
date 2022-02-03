@@ -52,7 +52,7 @@ h1.hippie {
     display: flex;
     justify-content: space-around;
     border-style: solid;
-    border-color: #024545;
+    border-color: #2b1719;
     border-width: 1px;
 
 }
@@ -68,18 +68,18 @@ h1.hippie {
 }
 
 #colorPickerSpan {
-    background-color: #024545;
+    background-color: #004242;
     display: inline-block;
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    box-shadow: 2px 3px 6px #0000001A;
+    box-shadow: 1px 1px 1px slategrey;
 }
 
 .colorPickerSpanHover {
-    box-shadow: 3px 5px 10px #0000001A;
+    box-shadow: 2px 4px 4px #2b1719;
     transition: .3s;
-    transform: scale(1.15);
+    transform: scale(1.1);
 }
 
 input[type='color'] {

@@ -51,29 +51,29 @@ function randomRGB(e) {
 
 
 //Color picker button
-colorPickerSpan.addEventListener('mouseenter', function(e) {
-    colorPickerSpan.classList.add('colorPickerSpanHover');
-});
-
-colorPickerSpan.addEventListener('mouseleave', function(e) {
-    colorPickerSpan.classList.remove('colorPickerSpanHover');
-});
-
-colorPickerSpan.addEventListener('click', function(e) {
-    colorPicker.click();
-} 
+colorPickerSpan.addEventListener('mouseenter', () =>
+    colorPickerSpan.classList.add('colorPickerSpanHover')
 );
 
-colorPicker.addEventListener('change', function(e){
-    colorPickerSpan.style.backgroundColor = colorPicker.value; 
-})
+colorPickerSpan.addEventListener('mouseleave', () =>
+    colorPickerSpan.classList.remove('colorPickerSpanHover')
+);
+
+colorPickerSpan.addEventListener('click', () =>
+    colorPicker.click()
+);
+
+colorPicker.addEventListener('change', () =>
+    colorPickerSpan.style.backgroundColor = colorPicker.value
+);
 
 
 //Reset button
-buttonReset.addEventListener('click', function() {
+buttonReset.addEventListener('click', () => {
     clearGrid(container);
     createGrid(16);
-    colorPickerSpan.style.backgroundColor = 'rgb(2, 69, 69)';
-}
-);
+    colorPickerSpan.style.backgroundColor = '#004242';
+    colorPicker. value = '#004242';
+    }
+    );
 

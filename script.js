@@ -24,8 +24,8 @@ function createGrid(number) {
         } 
         container.appendChild(divColumn);
     }
-    let boxPixel = document.querySelectorAll('div.box');
-    boxPixel.forEach(boxPixel => boxPixel.addEventListener('mouseenter', colorGrid));
+    let box = document.querySelectorAll('div.box');
+    box.forEach(box => box.addEventListener('mouseenter', colorGrid));
 }
 
 //Initial grid size upon page load
@@ -55,7 +55,25 @@ colorPicker.addEventListener('change', () =>
     colorPickerSpan.style.backgroundColor = colorPicker.value
 );
 
-//Rainbow button and functionality 
+//Eraser button 
+const eraser = document.getElementById('eraser');
+eraser.addEventListener('mouseenter', () => 
+    eraser.classList.add('eraserHover')
+);
+
+eraser.addEventListener('mouseleave', () => 
+    eraser.classList.remove('eraserHover')
+);
+
+eraser.addEventListener('click', () => {
+    removeRainbow();
+    let box = document.querySelectorAll('div.box');
+    box.forEach(box => box.addEventListener('mouseenter', () => 
+    box.style.backgroundColor = 'white'
+    ))
+});
+
+//Rainbow button and rainbow color functionality 
 const body = document.querySelector('body');
 const h1 = document.querySelector('h1');
 const rainbow = document.getElementById('rainbow');
@@ -80,6 +98,7 @@ function addRainbow() {
     let box = document.querySelectorAll('div.box');
     box.forEach(box => box.addEventListener('mouseenter', randomRGB));
     h1.classList.add('h1Rainbow');
+    colorPickerSpan.classList.add('rainbowSpan');
 }
 
 function removeRainbow() {
@@ -87,6 +106,7 @@ function removeRainbow() {
     box.forEach(box => box.removeEventListener('mouseenter', randomRGB));
     h1.classList.remove('h1Rainbow');
     body.style.backgroundColor = '#E4F0F0';
+    colorPickerSpan.classList.remove('rainbowSpan');
 }
 
 //Reset button
@@ -100,8 +120,7 @@ buttonReset.addEventListener('mouseleave', () =>
 );
 
 buttonReset.addEventListener('click', () => {
-    h1.classList.remove('h1Rainbow');
-    body.style.backgroundColor = '#E4F0F0';
+    removeRainbow();
     clearGrid(container);
     createGrid(16);
     colorPickerSpan.style.backgroundColor = '#004242';

@@ -31,6 +31,10 @@ h1 {
     -webkit-text-fill-color: transparent;
 }
 
+.rainbowSpan {
+    background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
+}
+
 .main {
     display: flex;
     flex-direction: column;
@@ -42,7 +46,7 @@ h1 {
 .controlPanel {
     display: flex;
     align-items: center;
-    gap: 30px;
+    gap: 20px;
     margin-bottom: -20px;
 }
 
@@ -108,6 +112,7 @@ button {
     text-shadow: .5px .5px slategrey;
 }
 
+.eraserHover,
 .resetHover {
     box-shadow: .5px .5px .5px #2b1719;
     transition: .2;

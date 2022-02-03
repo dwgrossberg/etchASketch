@@ -1,16 +1,17 @@
 const container = document.getElementById('container');
-const buttonClear = document.getElementById('reset');
+const buttonReset = document.getElementById('reset');
 const colorPickerSpan = document.getElementById('colorPickerSpan');
 const colorPicker = document.getElementById('colorPicker');
 
 
-//Creating and clearing the grid
+//Clearing the grid
 function clearGrid(parent) {
     while(parent.firstChild) {
         parent.removeChild(parent.firstChild)
     }
 }
 
+//Creating the grid
 function createGrid(number) {
     if (typeof Number(number) != 'number') return; //end function if no number is entered
     clearGrid(container);
@@ -38,9 +39,8 @@ createGrid(16);
 
 //Set boxPixel color and styles
 function colorGrid() {
-    this.style.backgroundColor = 'rgb(2, 69, 69)';
+    this.style.backgroundColor = colorPicker.value;
 }
-
 
 //Select a random rbg color for each square
 function randomRGB(e) {
@@ -53,22 +53,27 @@ function randomRGB(e) {
 //Color picker button
 colorPickerSpan.addEventListener('mouseenter', function(e) {
     colorPickerSpan.classList.add('colorPickerSpanHover');
-})
+});
 
 colorPickerSpan.addEventListener('mouseleave', function(e) {
     colorPickerSpan.classList.remove('colorPickerSpanHover');
-})
-
-//colorPickerSpan.style.backgroundColor = colorPicker.value; 
+});
 
 colorPickerSpan.addEventListener('click', function(e) {
     colorPicker.click();
 } 
 );
 
-buttonClear.addEventListener('click', function() {
+colorPicker.addEventListener('change', function(e){
+    colorPickerSpan.style.backgroundColor = colorPicker.value; 
+})
+
+
+//Reset button
+buttonReset.addEventListener('click', function() {
     clearGrid(container);
     createGrid(16);
+    colorPickerSpan.style.backgroundColor = 'rgb(2, 69, 69)';
 }
 );
 

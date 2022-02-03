@@ -47,6 +47,7 @@ colorPickerSpan.addEventListener('mouseleave', () =>
 );
 
 colorPickerSpan.addEventListener('click', () => {
+    removeRainbow();
     colorPicker.click();
 });
 
@@ -57,17 +58,21 @@ colorPicker.addEventListener('change', () =>
 //Rainbow button
 const rainbow = document.getElementById('rainbow');
 rainbow.addEventListener('click', addRainbow);
+
+function randomRGB() {
+    let r = Math.random, m = Math.round, s = 255;
+    let rgb = 'rgb(' + m(r()*s) + ', ' + m(r()*s) + ', ' + m(r()*s) + ')';
+    this.style.backgroundColor = rgb;
+}
+
 function addRainbow() {
     let box = document.querySelectorAll('div.box');
-    box.forEach(box => box.addEventListener('mouseenter', () => {
-        let r = Math.random, m = Math.round, s = 255;
-        let rgb = 'rgb(' + m(r()*s) + ', ' + m(r()*s) + ', ' + m(r()*s) + ')';
-        box.style.backgroundColor = rgb;
-    }));
+    box.forEach(box => box.addEventListener('mouseenter', randomRGB));
 }
 
 function removeRainbow() {
-
+    let box = document.querySelectorAll('div.box');
+    box.forEach(box => box.removeEventListener('mouseenter', randomRGB));
 }
 
 //Reset button

@@ -7,6 +7,7 @@ function clearGrid(parent) {
 
 //Creating the grid
 const container = document.getElementById('container');
+container.style.cursor = 'crosshair';
 function createGrid(number) {
     if (typeof Number(number) != 'number') return; //end function if no number is entered
     clearGrid(container);
@@ -24,20 +25,44 @@ function createGrid(number) {
         } 
         container.appendChild(divColumn);
     }
-    let box = document.querySelectorAll('div.box');
-    box.forEach(box => box.addEventListener('mouseenter', colorGrid));
-}
+    clickToColor();
+    }
 
 //Initial grid size upon page load
 createGrid(16);
 
-//Color picker button
-const colorPickerSpan = document.getElementById('colorPickerSpan');
-const colorPicker = document.getElementById('colorPicker');
+//Add color to the grid
 function colorGrid() {
     this.style.backgroundColor = colorPicker.value;
 }
 
+function addColorToGrid() {
+    let box = document.querySelectorAll('div.box');
+    box.forEach(box => box.addEventListener('mouseenter', colorGrid));
+}
+
+function stopColoringGrid() {
+    let box = document.querySelectorAll('div.box');
+    box.forEach(box => box.removeEventListener('mouseenter', colorGrid));
+}
+
+//Toggle pen on and off
+function clickToColor() {
+    let containerClicks = 0;
+    container.onclick = function() {
+        containerClicks++;
+        console.log(containerClicks);
+        if (containerClicks % 2 !== 0) {
+            addColorToGrid();
+        } else if (containerClicks % 2 === 0) {
+            stopColoringGrid();
+        } 
+    }
+}
+
+//Color picker button
+const colorPickerSpan = document.getElementById('colorPickerSpan');
+const colorPicker = document.getElementById('colorPicker');
 colorPickerSpan.addEventListener('mouseenter', () =>
     colorPickerSpan.classList.add('colorPickerSpanHover')
 );

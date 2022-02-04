@@ -46,12 +46,11 @@ function stopColoringGrid() {
     box.forEach(box => box.removeEventListener('mouseenter', colorGrid));
 }
 
-//Toggle pen on and off
+//Toggle default pen on and off
 function clickToColor() {
     let containerClicks = 0;
     container.onclick = function() {
         containerClicks++;
-        console.log(containerClicks);
         if (containerClicks % 2 !== 0) {
             addColorToGrid();
         } else if (containerClicks % 2 === 0) {
@@ -74,6 +73,7 @@ colorPickerSpan.addEventListener('mouseleave', () =>
 colorPickerSpan.addEventListener('click', () => {
     removeRainbow();
     unEraseGridPixel();
+    clickToColor();
     colorPicker.click();
 });
 
@@ -93,7 +93,7 @@ eraser.addEventListener('mouseleave', () =>
 
 eraser.addEventListener('click', () => {
     removeRainbow();
-    eraseGridPixel();
+    clickToErase();
 });
 
 function whiteout() {
@@ -111,6 +111,19 @@ function unEraseGridPixel() {
     box.forEach(box => box.removeEventListener('mouseenter', whiteout));
 }
 
+//Toggle eraser on and off
+function clickToErase() {
+    let containerClicks = 0;
+    container.onclick = function() {
+        containerClicks++;
+        if (containerClicks % 2 !== 0) {
+            eraseGridPixel();
+        } else if (containerClicks % 2 === 0) {
+            unEraseGridPixel();
+        } 
+    }
+}
+
 //Rainbow button and rainbow color functionality 
 const body = document.querySelector('body');
 const h1 = document.querySelector('h1');
@@ -123,7 +136,7 @@ rainbow.addEventListener('mouseleave', () =>
     rainbow.classList.remove('rainbowHover')
 );
 
-rainbow.addEventListener('click', addRainbow);
+rainbow.addEventListener('click', clickToRainbow);
 
 function randomRGB() {
     let r = Math.random, m = Math.round, s = 255;
@@ -135,8 +148,6 @@ function randomRGB() {
 function addRainbow() {
     let box = document.querySelectorAll('div.box');
     box.forEach(box => box.addEventListener('mouseenter', randomRGB));
-    h1.classList.add('h1Rainbow');
-    colorPickerSpan.classList.add('rainbowSpan');
 }
 
 function removeRainbow() {
@@ -145,6 +156,28 @@ function removeRainbow() {
     h1.classList.remove('h1Rainbow');
     body.style.backgroundColor = '#E4F0F0';
     colorPickerSpan.classList.remove('rainbowSpan');
+}
+
+//Toggle rainbow pen on and off
+function clickToRainbow() {
+    h1.classList.add('h1Rainbow');
+    colorPickerSpan.classList.add('rainbowSpan');
+    let containerClicks = 0;
+    container.onclick = function() {
+        containerClicks++;
+        if (containerClicks % 2 !== 0) {
+            if (h1.value != 'h1Rainbow') {
+                h1.classList.add('h1Rainbow');
+            }
+            if (colorPickerSpan.value != 'rainbowSpan') {
+                colorPickerSpan.classList.add('rainbowSpan');
+            }
+            addRainbow();
+        } else if (containerClicks % 2 === 0) {
+            let box = document.querySelectorAll('div.box');
+            box.forEach(box => box.removeEventListener('mouseenter', randomRGB));
+        } 
+    }
 }
 
 //Reset button

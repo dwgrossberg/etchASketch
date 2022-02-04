@@ -18,8 +18,8 @@ body {
 h1 {
     font-family: 'Lobster Two', cursive;
     font-size: 60px;
-    margin-bottom: 40px;
-    margin-top: -40px;
+    margin-bottom: 30px;
+    margin-top: -30px;
     color: #79B4B4;
     text-shadow: 1px 1px #2b1719;
 }
@@ -117,4 +117,45 @@ button {
     box-shadow: .5px .5px .5px #2b1719;
     transition: .2;
     transform: scale(1.05);
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 13px;
+    margin-top: -25px;
+    margin-bottom: 0px;
+    font-family: 'Lato', sans-serif;
+    font-size: 13px;
+    color: #2b1719;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 250px;
+    height: 7px;
+    background: #f2f2f2;
+    border-radius: 16px;
+    box-shadow: .5px .5px .5px slategrey;
+}
+
+input[type="range"]:hover {
+    box-shadow: .5px .5px .5px #2b1719;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #79B4B4;
+    box-shadow: .5px .5px .5px slategrey;
+    cursor: ew-resize;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    box-shadow: .5px .5px .5px #2b1719;
+    transition: .2;
+    transform: scale(1.1);
 }

@@ -193,8 +193,17 @@ buttonReset.addEventListener('mouseleave', () =>
 buttonReset.addEventListener('click', () => {
     removeRainbow();
     clearGrid(container);
+    gridSize.value = 49.5;
     createGrid(16);
     colorPickerSpan.style.backgroundColor = '#004242';
     colorPicker.value = '#004242';
 }
 );
+
+//Grid resize button & footer
+const gridSize = document.getElementById('gridSize');
+gridSize.addEventListener('change', () => {
+    let size = gridSize.value;
+    createGrid(size);
+    }
+)

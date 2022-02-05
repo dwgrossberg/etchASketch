@@ -78,7 +78,7 @@ h1 {
 .colorPickerSpanHover {
     box-shadow: 3px 3px 3px #2b1719;
     transition: .2s;
-    transform: scale(1.1);
+    transform: scale(1.2);
 }
 
 input[type="checkbox"] {
@@ -86,7 +86,7 @@ input[type="checkbox"] {
 }
 
 .toggle {
-    position : relative;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -101,7 +101,7 @@ input[type="checkbox"] {
     box-shadow: .5px .5px .5px slategrey;
 }
 
-.toggle:after {
+.toggle::after {
     content: '';
     position: absolute;
     width: 50px;
@@ -112,9 +112,15 @@ input[type="checkbox"] {
     transition: all 0.3s;
 }
 
+.toggle:hover {
+    box-shadow: .5px .5px .5px #2b1719;
+    transition: .2;
+    transform: scale(1.05);
+}
+
 input[type="checkbox"]:checked + .toggle::after {
     left : 49px; 
-    background-color: #79B4B4;
+    background-image: linear-gradient(to left,#708090, #989898, #A9A9A9, #C0C0C0,#DCDCDC, #F5F5F5);
 }
 
 .rainbowSpan {

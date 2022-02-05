@@ -1,10 +1,3 @@
-//Clearing the grid
-function clearGrid(parent) {
-    while(parent.firstChild) {
-        parent.removeChild(parent.firstChild)
-    }
-}
-
 //Creating the grid
 const container = document.getElementById('container');
 container.style.cursor = 'crosshair';
@@ -28,12 +21,28 @@ function createGrid(number) {
     clickToColor();
     }
 
+//Clearing the grid
+function clearGrid(parent) {
+    while(parent.firstChild) {
+        parent.removeChild(parent.firstChild)
+    }
+}
+
 //Initial grid size upon page load
 createGrid(16);
 
 //Add color to the grid
+const shade = document.getElementById('shade');
 function colorGrid() {
-    this.style.backgroundColor = colorPicker.value;
+    if (shade.checked) {
+        this.style.backgroundColor = colorPicker.value;
+        let opacity = .1;
+        this.style.opacity = String(opacity/10);
+        console.log(opacity);
+        opacity++;
+    } else {
+        this.style.backgroundColor = colorPicker.value;
+    }
 }
 
 function addColorToGrid() {

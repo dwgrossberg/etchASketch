@@ -113,10 +113,14 @@ function unEraseGridPixel() {
 
 //Toggle eraser on and off
 function clickToErase() {
+    colorPickerSpan.style.backgroundColor = 'white';
     let containerClicks = 0;
     container.onclick = function() {
         containerClicks++;
         if (containerClicks % 2 !== 0) {
+            if (colorPickerSpan.vale != 'white') {
+                colorPickerSpan.style.backgroundColor = 'white';
+            }
             eraseGridPixel();
         } else if (containerClicks % 2 === 0) {
             unEraseGridPixel();
@@ -204,6 +208,9 @@ buttonReset.addEventListener('click', () => {
 const gridSize = document.getElementById('gridSize');
 gridSize.addEventListener('change', () => {
     let size = gridSize.value;
+    removeRainbow();
+    unEraseGridPixel();
+    colorPickerSpan.style.backgroundColor = colorPicker.value;
     createGrid(size);
     }
 )

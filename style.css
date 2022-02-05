@@ -72,13 +72,49 @@ h1 {
     height: 50px;
     border-radius: 50%;
     box-shadow: .5px .5px .5px slategrey;
-    margin-right: -20px;
+    margin-right: -10px;
 }
 
 .colorPickerSpanHover {
     box-shadow: 3px 3px 3px #2b1719;
     transition: .2s;
     transform: scale(1.1);
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+.toggle {
+    position : relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Lato', sans-serif;
+    font-size: 13px;
+    color: #2b1719;
+    padding: 7px 13px;
+    background-color: #f2f2f2;
+    width : 73px;
+    height : 16px;
+    border-radius: 30px;
+    box-shadow: .5px .5px .5px slategrey;
+}
+
+.toggle:after {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 30px;
+    border-radius: 30px;
+    background-color: slategrey;
+    left: 0px;
+    transition: all 0.3s;
+}
+
+input[type="checkbox"]:checked + .toggle::after {
+    left : 49px; 
+    background-color: #79B4B4;
 }
 
 .rainbowSpan {

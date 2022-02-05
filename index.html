@@ -21,11 +21,15 @@
                 <span id="colorPickerSpan"></span>
                 <input type="color" id="colorPicker" name="colorPicker" value="#024545">
                 <label for="colorPicker"></label>
-                <button id="eraser">Eraser</button>
+                <input type="checkbox" id="shade">
+                <label for="shade" class="toggle">
+                    <p>Shade&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Solid</p>
+                </label>
                 <button id="rainbow">Rainbow</button>
+                <button id="eraser">Eraser</button>
                 <button id="reset">Reset</button>
             </div>
-            <div id="container"><p>Click to sketch</p></div>
+            <div id="container" class="clickToSketch"><p>Click to sketch</p></div>
             <div class="footer">
                 <input type="range" id="gridSize" name="gridSize" min="1" max="100">
                 <label for="gridSize">Set Pixel Size</label>

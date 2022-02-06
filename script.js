@@ -35,11 +35,7 @@ createGrid(16);
 const shade = document.getElementById('shade');
 function colorGrid() {
     if (shade.checked) {
-        this.style.backgroundColor = colorPicker.value;
-        let opacity = .1;
-        this.style.opacity = String(opacity/10);
-        console.log(opacity);
-        opacity++;
+        this.style.backgroundColor = colorPicker.value
     } else {
         this.style.backgroundColor = colorPicker.value;
     }

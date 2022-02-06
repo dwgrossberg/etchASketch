@@ -1,5 +1,6 @@
 //Creating the grid
 const container = document.getElementById('container');
+const pixel = [];
 container.style.cursor = 'crosshair';
 function createGrid(number) {
     if (typeof Number(number) != 'number') return; //end function if no number is entered
@@ -10,11 +11,12 @@ function createGrid(number) {
         let divColumn = document.createElement('div');
         divColumn.classList.add('gridColumn');
         for (let i = 0; i < number; i++){
-            let box = document.createElement('div');
-            box.classList.add('box'); 
-            box.style.height = boxHeight;
-            box.style.width = boxWidth;
-            divColumn.appendChild(box);
+            pixel[i] = document.createElement('div');
+            pixel[i].classList.add('box'); 
+            pixel[i].style.height = boxHeight;
+            pixel[i].style.width = boxWidth;
+            pixel[i].dataset.shade = 0; //reset shade icrement to zero 
+            divColumn.appendChild(pixel[i]);
         } 
         container.appendChild(divColumn);
     }
@@ -33,11 +35,22 @@ createGrid(16);
 
 //Add color to the grid
 const shade = document.getElementById('shade');
-function colorGrid() {
+function colorGrid(e) {
+    this.style.backgroundColor = colorPicker.value;
     if (shade.checked) {
-        this.style.backgroundColor = colorPicker.value
-    } else {
-        this.style.backgroundColor = colorPicker.value;
+        let oldColor = this.style.backgroundColor;
+        console.log(oldColor);
+        let rgbaString = (oldColor.charAt(3) == 'a') ? oldColor.slice(5, -1) : oldColor.slice(4, -1);
+        //checks to see if backgroundColor is in rgba or rgb format
+        let rgbaArray = rgbaString.split(',');
+        let red = rgbaArray[0];
+        let green = rgbaArray[1];
+        let blue = rgbaArray[2];
+        let alpha = rgbaArray[3] ? rgbaArray[3] : 1;
+        let currentShadeStep = e.target.dataset.shade;
+        console.log([red, green, blue, alpha]);
+        console.log('current shade step: ' + currentShadeStep);
+        
     }
 }
 

@@ -37,20 +37,19 @@ createGrid(16);
 const shade = document.getElementById('shade');
 function colorGrid(e) {
     this.style.backgroundColor = colorPicker.value;
-    if (shade.checked) {
-        let oldColor = this.style.backgroundColor;
-        console.log(oldColor);
-        let rgbaString = (oldColor.charAt(3) == 'a') ? oldColor.slice(5, -1) : oldColor.slice(4, -1);
-        //checks to see if backgroundColor is in rgba or rgb format
-        let rgbaArray = rgbaString.split(',');
-        let red = rgbaArray[0];
-        let green = rgbaArray[1];
-        let blue = rgbaArray[2];
-        let alpha = rgbaArray[3] ? rgbaArray[3] : 1;
+    if (!shade.checked) {
+        e.target.dataset.shade = 0; //reset number of steps to reach full opacity
+        this.style.opacity = 1;
+    } else if (shade.checked) {
+        let currentColor = this.style.backgroundColor;
+        let oldOpacity = Number(this.style.opacity);
+        console.log(Number(oldOpacity));
         let currentShadeStep = e.target.dataset.shade;
-        console.log([red, green, blue, alpha]);
         console.log('current shade step: ' + currentShadeStep);
-        
+        let newShade = getNewOpacityValue(oldOpacity, currentShadeStep);
+        currentShadeStep ++;
+        e.target.dataset.shade = currentShadeStep;
+        return console.log((this.style.opacity = newShade));
     }
 }
 
@@ -62,6 +61,15 @@ function addColorToGrid() {
 function stopColoringGrid() {
     let box = document.querySelectorAll('div.box');
     box.forEach(box => box.removeEventListener('mouseenter', colorGrid));
+}
+
+//Incremental shading
+function getNewOpacityValue(oldOpacity, currentShadeStep) {
+    if (currentShadeStep === 10) return;
+    else if (currentShadeStep < 10) {
+        let newOpacity = currentShadeStep / 10;
+        return (String(newOpacity));
+    }
 }
 
 //Toggle default pen on and off
@@ -217,6 +225,7 @@ buttonReset.addEventListener('click', () => {
     clearGrid(container);
     gridSize.value = 49.5;
     createGrid(16);
+    shade.checked = false;
     colorPickerSpan.style.backgroundColor = '#004242';
     colorPicker.value = '#004242';
 }
@@ -229,6 +238,7 @@ gridSize.addEventListener('change', () => {
     removeRainbow();
     unEraseGridPixel();
     colorPickerSpan.style.backgroundColor = colorPicker.value;
+    shade.checked = false;
     createGrid(size);
     }
 )

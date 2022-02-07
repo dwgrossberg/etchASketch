@@ -41,15 +41,12 @@ function colorGrid(e) {
         e.target.dataset.shade = 0; //reset number of steps to reach full opacity
         this.style.opacity = 1;
     } else if (shade.checked) {
-        let currentColor = this.style.backgroundColor;
         let oldOpacity = Number(this.style.opacity);
-        console.log(Number(oldOpacity));
         let currentShadeStep = e.target.dataset.shade;
-        console.log('current shade step: ' + currentShadeStep);
         let newShade = getNewOpacityValue(oldOpacity, currentShadeStep);
         currentShadeStep ++;
         e.target.dataset.shade = currentShadeStep;
-        return console.log((this.style.opacity = newShade));
+        return (this.style.opacity = newShade);
     }
 }
 
@@ -120,10 +117,14 @@ eraser.addEventListener('mouseleave', () =>
 eraser.addEventListener('click', () => {
     removeRainbow();
     clickToErase();
+    shade.checked = false;
 });
 
-function whiteout() {
+function whiteout(e) {
     this.style.backgroundColor = 'white';
+    e.target.dataset.shade = 0;
+    this.style.opacity = 1;
+    shade.checked = false;
 }
 
 function eraseGridPixel() {
@@ -168,11 +169,22 @@ rainbow.addEventListener('mouseleave', () =>
 
 rainbow.addEventListener('click', clickToRainbow);
 
-function randomRGB() {
+function randomRGB(e) {
     let r = Math.random, m = Math.round, s = 255;
     let rgb = 'rgb(' + m(r()*s) + ', ' + m(r()*s) + ', ' + m(r()*s) + ')';
     this.style.backgroundColor = rgb;
-    body.style.backgroundColor = rgb; //some visual eye-candy
+    body.style.backgroundColor = rgb; //some visual eye-candy  
+    if (!shade.checked) {
+    e.target.dataset.shade = 0;
+    this.style.opacity = 1;
+    } else if (shade.checked) {
+        let oldOpacity = Number(this.style.opacity);
+        let currentShadeStep = e.target.dataset.shade;
+        let newShade = getNewOpacityValue(oldOpacity, currentShadeStep);
+        currentShadeStep++;
+        e.target.dataset.shade = currentShadeStep;
+        return (this.style.opacity = newShade);
+        }
 }
 
 function addRainbow() {

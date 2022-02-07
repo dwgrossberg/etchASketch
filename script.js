@@ -15,7 +15,7 @@ function createGrid(number) {
             pixel[i].classList.add('box'); 
             pixel[i].style.height = boxHeight;
             pixel[i].style.width = boxWidth;
-            pixel[i].dataset.shade = 0; //reset shade icrement to zero 
+            pixel[i].dataset.shade = 0; //set shade increment to zero 
             divColumn.appendChild(pixel[i]);
         } 
         container.appendChild(divColumn);
@@ -43,8 +43,8 @@ function colorGrid(e) {
     } else if (shade.checked) {
         let oldOpacity = Number(this.style.opacity);
         let currentShadeStep = e.target.dataset.shade;
-        let newShade = getNewOpacityValue(oldOpacity, currentShadeStep);
         currentShadeStep ++;
+        let newShade = getNewOpacityValue(oldOpacity, currentShadeStep);
         e.target.dataset.shade = currentShadeStep;
         return (this.style.opacity = newShade);
     }
@@ -104,6 +104,73 @@ colorPicker.addEventListener('change', () =>
     colorPickerSpan.style.backgroundColor = colorPicker.value
 );
 
+//Rainbow button and rainbow color functionality 
+const body = document.querySelector('body');
+const h1 = document.querySelector('h1');
+const rainbow = document.getElementById('rainbow');
+rainbow.addEventListener('mouseenter', () =>
+    rainbow.classList.add('rainbowHover')
+);
+
+rainbow.addEventListener('mouseleave', () =>
+    rainbow.classList.remove('rainbowHover')
+);
+
+rainbow.addEventListener('click', clickToRainbow);
+
+function randomRGB(e) {
+    let r = Math.random, m = Math.round, s = 255;
+    let rgb = 'rgb(' + m(r()*s) + ', ' + m(r()*s) + ', ' + m(r()*s) + ')';
+    this.style.backgroundColor = rgb;
+    body.style.backgroundColor = rgb; //some visual eye-candy  
+    if (!shade.checked) {
+    e.target.dataset.shade = 0; //reset number of shade steps to 0
+    this.style.opacity = 1;
+    } else if (shade.checked) {
+        let oldOpacity = Number(this.style.opacity);
+        let currentShadeStep = e.target.dataset.shade;
+        currentShadeStep++;
+        let newShade = getNewOpacityValue(oldOpacity, currentShadeStep);
+        e.target.dataset.shade = currentShadeStep;
+        return (this.style.opacity = newShade);
+        }
+}
+
+function addRainbow() {
+    let box = document.querySelectorAll('div.box');
+    box.forEach(box => box.addEventListener('mouseenter', randomRGB));
+}
+
+function removeRainbow() {
+    let box = document.querySelectorAll('div.box');
+    box.forEach(box => box.removeEventListener('mouseenter', randomRGB));
+    h1.classList.remove('h1Rainbow');
+    body.style.backgroundColor = '#E4F0F0';
+    colorPickerSpan.classList.remove('rainbowSpan');
+}
+
+//Toggle rainbow pen on and off
+function clickToRainbow() {
+    h1.classList.add('h1Rainbow');
+    colorPickerSpan.classList.add('rainbowSpan');
+    let containerClicks = 0;
+    container.onclick = function() {
+        containerClicks++;
+        if (containerClicks % 2 !== 0) {
+            if (h1.value != 'h1Rainbow') {
+                h1.classList.add('h1Rainbow');
+            }
+            if (colorPickerSpan.value != 'rainbowSpan') {
+                colorPickerSpan.classList.add('rainbowSpan');
+            }
+            addRainbow();
+        } else if (containerClicks % 2 === 0) {
+            let box = document.querySelectorAll('div.box');
+            box.forEach(box => box.removeEventListener('mouseenter', randomRGB));
+        } 
+    }
+}
+
 //Eraser button 
 const eraser = document.getElementById('eraser');
 eraser.addEventListener('mouseenter', () => 
@@ -155,73 +222,6 @@ function clickToErase() {
     }
 }
 
-//Rainbow button and rainbow color functionality 
-const body = document.querySelector('body');
-const h1 = document.querySelector('h1');
-const rainbow = document.getElementById('rainbow');
-rainbow.addEventListener('mouseenter', () =>
-    rainbow.classList.add('rainbowHover')
-);
-
-rainbow.addEventListener('mouseleave', () =>
-    rainbow.classList.remove('rainbowHover')
-);
-
-rainbow.addEventListener('click', clickToRainbow);
-
-function randomRGB(e) {
-    let r = Math.random, m = Math.round, s = 255;
-    let rgb = 'rgb(' + m(r()*s) + ', ' + m(r()*s) + ', ' + m(r()*s) + ')';
-    this.style.backgroundColor = rgb;
-    body.style.backgroundColor = rgb; //some visual eye-candy  
-    if (!shade.checked) {
-    e.target.dataset.shade = 0;
-    this.style.opacity = 1;
-    } else if (shade.checked) {
-        let oldOpacity = Number(this.style.opacity);
-        let currentShadeStep = e.target.dataset.shade;
-        let newShade = getNewOpacityValue(oldOpacity, currentShadeStep);
-        currentShadeStep++;
-        e.target.dataset.shade = currentShadeStep;
-        return (this.style.opacity = newShade);
-        }
-}
-
-function addRainbow() {
-    let box = document.querySelectorAll('div.box');
-    box.forEach(box => box.addEventListener('mouseenter', randomRGB));
-}
-
-function removeRainbow() {
-    let box = document.querySelectorAll('div.box');
-    box.forEach(box => box.removeEventListener('mouseenter', randomRGB));
-    h1.classList.remove('h1Rainbow');
-    body.style.backgroundColor = '#E4F0F0';
-    colorPickerSpan.classList.remove('rainbowSpan');
-}
-
-//Toggle rainbow pen on and off
-function clickToRainbow() {
-    h1.classList.add('h1Rainbow');
-    colorPickerSpan.classList.add('rainbowSpan');
-    let containerClicks = 0;
-    container.onclick = function() {
-        containerClicks++;
-        if (containerClicks % 2 !== 0) {
-            if (h1.value != 'h1Rainbow') {
-                h1.classList.add('h1Rainbow');
-            }
-            if (colorPickerSpan.value != 'rainbowSpan') {
-                colorPickerSpan.classList.add('rainbowSpan');
-            }
-            addRainbow();
-        } else if (containerClicks % 2 === 0) {
-            let box = document.querySelectorAll('div.box');
-            box.forEach(box => box.removeEventListener('mouseenter', randomRGB));
-        } 
-    }
-}
-
 //Reset button
 const buttonReset = document.getElementById('reset');
 buttonReset.addEventListener('mouseenter', () => 
@@ -235,7 +235,6 @@ buttonReset.addEventListener('mouseleave', () =>
 buttonReset.addEventListener('click', () => {
     removeRainbow();
     clearGrid(container);
-    gridSize.value = 49.5;
     createGrid(16);
     shade.checked = false;
     colorPickerSpan.style.backgroundColor = '#004242';

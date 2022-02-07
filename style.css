@@ -53,6 +53,7 @@ h1 {
     border-color: #2b1719;
     border-width: 3px;
     box-shadow: .5px .5px .5px slategrey;
+    background-color: white;
 }
 
 .gridColumn {

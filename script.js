@@ -236,6 +236,7 @@ buttonReset.addEventListener('click', () => {
     removeRainbow();
     clearGrid(container);
     createGrid(16);
+    gridSize.value = 50; //resets the gridValue thumb to midway after hitting reset
     shade.checked = false;
     colorPickerSpan.style.backgroundColor = '#004242';
     colorPicker.value = '#004242';

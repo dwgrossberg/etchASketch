@@ -5,8 +5,8 @@ container.style.cursor = 'crosshair';
 function createGrid(number) {
     if (typeof Number(number) != 'number') return; //end function if no number is entered
     clearGrid(container);
-    const boxHeight = String(60/Number(number)) + 'vh';
-    const boxWidth = String(70/Number(number)) + 'vw';
+    const boxHeight = String(450/Number(number)) + 'px';
+    const boxWidth = String(450/Number(number)) + 'px';
     for (let i = 0; i < number; i++) { 
         let divColumn = document.createElement('div');
         divColumn.classList.add('gridColumn');
@@ -52,11 +52,13 @@ function colorGrid(e) {
 
 function addColorToGrid() {
     let box = document.querySelectorAll('div.box');
+    box.forEach(box => box.addEventListener('mouseup', colorGrid));
     box.forEach(box => box.addEventListener('mouseenter', colorGrid));
 }
 
 function stopColoringGrid() {
     let box = document.querySelectorAll('div.box');
+    box.forEach(box => box.removeEventListener('mouseup', colorGrid));
     box.forEach(box => box.removeEventListener('mouseenter', colorGrid));
 }
 
@@ -72,7 +74,7 @@ function getNewOpacityValue(oldOpacity, currentShadeStep) {
 //Toggle default pen on and off
 function clickToColor() {
     let containerClicks = 0;
-    container.onclick = function() {
+    container.onmousedown = function() {
         containerClicks++;
         if (containerClicks % 2 !== 0) {
             addColorToGrid();
@@ -122,7 +124,6 @@ function randomRGB(e) {
     let r = Math.random, m = Math.round, s = 255;
     let rgb = 'rgb(' + m(r()*s) + ', ' + m(r()*s) + ', ' + m(r()*s) + ')';
     this.style.backgroundColor = rgb;
-    body.style.backgroundColor = rgb; //some visual eye-candy  
     if (!shade.checked) {
     e.target.dataset.shade = 0; //reset number of shade steps to 0
     this.style.opacity = 1;
@@ -138,6 +139,7 @@ function randomRGB(e) {
 
 function addRainbow() {
     let box = document.querySelectorAll('div.box');
+    box.forEach(box => box.addEventListener('mouseup', randomRGB));
     box.forEach(box => box.addEventListener('mouseenter', randomRGB));
 }
 
@@ -154,7 +156,7 @@ function clickToRainbow() {
     h1.classList.add('h1Rainbow');
     colorPickerSpan.classList.add('rainbowSpan');
     let containerClicks = 0;
-    container.onclick = function() {
+    container.onmousedown = function() {
         containerClicks++;
         if (containerClicks % 2 !== 0) {
             if (h1.value != 'h1Rainbow') {
@@ -166,7 +168,8 @@ function clickToRainbow() {
             addRainbow();
         } else if (containerClicks % 2 === 0) {
             let box = document.querySelectorAll('div.box');
-            box.forEach(box => box.removeEventListener('mouseenter', randomRGB));
+            box.forEach(box => box.removeEventListener('mouseup', randomRGB));  //set these event listeners here so as not to effect 
+            box.forEach(box => box.removeEventListener('mouseenter', randomRGB)); //the rainbow css styling while still in rainbow mode
         } 
     }
 }
@@ -196,12 +199,14 @@ function whiteout(e) {
 
 function eraseGridPixel() {
     let box = document.querySelectorAll('div.box');
+    box.forEach(box => box.addEventListener('mouseup', whiteout));
     box.forEach(box => box.addEventListener('mouseenter', whiteout));
     colorPickerSpan.style.backgroundColor = 'white';
 }
 
 function unEraseGridPixel() {
     let box = document.querySelectorAll('div.box');
+    box.forEach(box => box.removeEventListener('mouseup', whiteout));
     box.forEach(box => box.removeEventListener('mouseenter', whiteout));
 }
 
@@ -209,7 +214,7 @@ function unEraseGridPixel() {
 function clickToErase() {
     colorPickerSpan.style.backgroundColor = 'white';
     let containerClicks = 0;
-    container.onclick = function() {
+    container.onmousedown = function() {
         containerClicks++;
         if (containerClicks % 2 !== 0) {
             if (colorPickerSpan.vale != 'white') {

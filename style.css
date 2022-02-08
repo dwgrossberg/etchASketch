@@ -42,7 +42,7 @@ h1 {
 .controlPanel {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 15px;
     margin-bottom: -30px;
 }
 

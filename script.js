@@ -12,10 +12,11 @@ function createGrid(number) {
         divColumn.classList.add('gridColumn');
         for (let i = 0; i < number; i++){
             pixel[i] = document.createElement('div');
-            pixel[i].classList.add('box'); 
+            pixel[i].classList.add('box');
+            pixel[i].classList.add('hover');
             pixel[i].style.height = boxHeight;
             pixel[i].style.width = boxWidth;
-            pixel[i].dataset.shade = 0; //set shade increment to zero 
+            pixel[i].dataset.shade = 0; //set shade increment counter to zero 
             divColumn.appendChild(pixel[i]);
         } 
         container.appendChild(divColumn);
@@ -102,11 +103,15 @@ colorPickerSpan.addEventListener('click', () => {
     colorPicker.click();
 });
 
+function addHoverClass() {
+    
+}
+
 colorPicker.addEventListener('change', () =>
     colorPickerSpan.style.backgroundColor = colorPicker.value
 );
 
-//Rainbow button and rainbow color functionality 
+//Rainbow button and rainbow color functionality (Random RBG)
 const body = document.querySelector('body');
 const h1 = document.querySelector('h1');
 const rainbow = document.getElementById('rainbow');

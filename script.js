@@ -13,7 +13,6 @@ function createGrid(number) {
         for (let i = 0; i < number; i++){
             pixel[i] = document.createElement('div');
             pixel[i].classList.add('box');
-            pixel[i].classList.add('hover');
             pixel[i].style.height = boxHeight;
             pixel[i].style.width = boxWidth;
             pixel[i].dataset.shade = 0; //set shade increment counter to zero 

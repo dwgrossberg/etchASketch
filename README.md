@@ -1,11 +1,6 @@
 # etchASketch
-An interactive Etch a Sketch game built with JavaScript
+An interactive Etch-a-Sketch built with vanilla JavaScript
 
-Users will be able to enter a number of squares per side in order to create a customizeable Etch A Sketch game. Regardless of the number of squares, the sketch pad will cover the same amount of area. Users will be able to hover their mouse over individual squares in order to change their appearance.
+This simple game allows users to draw on a sketchpad by clicking their mouse and moving it across the screen. Users can specify the size of their sketchpad pixels, as well as pixel color through a customizable color picker. In addition there is a button that will set each pixel to a random rbg color, an eraser, and a toggle shade button that darkens each pixel by an increment of 10%.
 
-Key features inlude: 
-    - a custom color picker
-    - toggle shade function which darkens squares by an increment of 10% opacity
-    - a rainbow button that creates squares of random rbg colors
-    - an eraser
-    - custom grid size slider bar
+Built as part of The Odin Project, 2022.

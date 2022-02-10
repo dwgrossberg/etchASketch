@@ -211,7 +211,12 @@ input[type="range"]::-webkit-slider-thumb:hover {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
+}
+
+.madeBy a {
+    text-decoration: none;
+    color: #2b1719;
 }
 
 .madeBy img {
